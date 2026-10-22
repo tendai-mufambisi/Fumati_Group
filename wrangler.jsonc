@@ -1,0 +1,35 @@
+{
+  // Single source of truth for the deploy target and the Cloudflare bindings.
+  //
+  // Nitro's cloudflare preset generates `.output/server/wrangler.json` (it supplies
+  // `main`, `assets` and the compatibility settings itself). `scripts/patch-wrangler.mjs`
+  // re-stamps the values below onto the generated config after every build.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "fumati-group",
+
+  // Pinned: nitro would otherwise stamp the build date, which can be newer than the
+  // local workerd runtime supports.
+  "compatibility_date": "2026-10-01",
+
+  "routes": [{ "pattern": "fumatigroup.digitsdigital.co.zw", "custom_domain": true }],
+
+  // Upgrades plain http to https in production. .dev.vars sets it to "0" so
+  // `wrangler dev` (which presents requests as http on this hostname) doesn't loop.
+  "vars": { "FORCE_HTTPS": "1" },
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "fumati-group",
+      "database_id": "7d916e65-3cfd-4f48-b581-00a5219f3152",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  "r2_buckets": [
+    {
+      "binding": "MEDIA",
+      "bucket_name": "fumati-group-media"
+    }
+  ]
+}

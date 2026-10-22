@@ -1,24 +1,32 @@
-# Build It, My Gee
+# Fumati Engineers — fumatigroup.digitsdigital.co.zw
 
-Go on build this my gee
+Website and owner dashboard for Fumati Engineers (Fumati Group t/a Fumati Engineering),
+Harare. Started in Lovable, finished by hand: TanStack Start on a Cloudflare Worker with
+D1 (content) and R2 (photo/video uploads), and a dashboard at `/admin`
+(see `docs/admin-access.md`).
 
-This project was built with [Lovable](https://lovable.dev).
+Website by [Digits Digital](https://www.digitsdigital.co.zw).
 
-## Build with Lovable
+## Where to edit things
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/bda8eec0-0e9e-4663-8d3f-b8ff86e7554c).
+| What | Where |
+| --- | --- |
+| Projects, team, testimonials, brands, awards, hero photos, services, values, FAQs, contacts, SEO, section switches | Dashboard, `/admin` (no redeploy) |
+| List fields and the section switches | `src/data/collections.ts` |
+| Content the site shipped with (seeds D1, and is the fallback if D1 is unreachable) | `src/data/seed.ts` |
+| Brand colours and animations | `src/styles.css` |
+| Shipped photos | `public/images/` (WebP; large ones have a `-sm` twin) |
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## Commands
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+bun install
+bun run dev        # UI only (no D1: the shipped content is shown)
+bun run local      # full stack locally with local D1/R2 (needs .dev.vars: ADMIN_SECRET=… and FORCE_HTTPS=0)
+bun run deploy     # build + deploy to fumatigroup.digitsdigital.co.zw
+bun run db:migrate # apply new migrations to the live database (after a build)
+node scripts/set-password.mjs "new password"
 ```
+
+`scripts/build-seed.ts` generated `migrations/0001_init.sql` and `0002_seed.sql`. Both are
+applied to the live database, so later schema changes go in new numbered migrations.
