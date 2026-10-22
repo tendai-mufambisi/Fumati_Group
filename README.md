@@ -17,6 +17,13 @@ Website by [Digits Digital](https://www.digitsdigital.co.zw).
 | Brand colours and animations | `src/styles.css` |
 | Shipped photos | `public/images/` (WebP; large ones have a `-sm` twin) |
 
+## Deployment
+
+Code lives at https://github.com/tendai-mufambisi/Fumati_Group. Every push to `main` runs
+`.github/workflows/deploy.yml`: build, apply any new D1 migrations, deploy the Worker. It needs
+the repository secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`; without them the
+workflow skips the deploy with a warning.
+
 ## Commands
 
 ```sh
