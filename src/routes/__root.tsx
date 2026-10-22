@@ -96,7 +96,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" },
     ],
     scripts: [{ type: "application/ld+json", children: JSON.stringify(jsonLd) }],
-    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
