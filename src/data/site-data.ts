@@ -13,6 +13,7 @@ export const AGENCY = {
   name: "Digits Digital",
   url: "https://www.digitsdigital.co.zw",
   label: "www.digitsdigital.co.zw",
+  whatsapp: "https://wa.me/263776611049",
 };
 
 /* ---------- types ---------- */

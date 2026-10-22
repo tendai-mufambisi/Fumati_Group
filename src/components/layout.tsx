@@ -17,7 +17,7 @@ import {
 
 import { useCollection, useContact, useSiteData } from "@/components/site/use-site-data";
 import { Logo, LogoMark } from "@/components/site";
-import { AGENCY } from "@/data/site-data";
+import { AGENCY, SITE_URL } from "@/data/site-data";
 import { cn } from "@/lib/utils";
 
 const ALL_NAV = [
@@ -324,41 +324,38 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <div className="relative border-t border-primary-foreground/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 text-xs sm:flex-row">
-          <span>
-            © {new Date().getFullYear()} {s.company_name}. All rights reserved.
-            <Link
-              to="/admin/login"
-              className="ml-1 opacity-40 hover:opacity-100"
-              aria-label="Staff sign in"
-            >
-              ·
-            </Link>
-          </span>
-          <span className="eyebrow !text-[10px]">
-            Turning Steel Into <span className="text-red-500">Gold</span>
-          </span>
-          <span>
+      <div className="relative mx-auto max-w-7xl px-5 pb-10">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-primary-foreground/10 pt-6 text-xs text-primary-foreground/45 sm:flex-row">
+          <p>
+            {/* The © is the staff way into the dashboard; it reads as plain text. */}
+            <Link to="/admin/login" aria-label="Staff sign in" className="text-inherit">
+              ©
+            </Link>{" "}
+            {new Date().getFullYear()} {s.company_name}. All rights reserved.
+          </p>
+          <p>{SITE_URL.replace("https://", "")}</p>
+        </div>
+
+        <div className="mt-8 text-center text-sm tracking-wide">
+          <p className="text-primary-foreground/55">
             Website by{" "}
             <a
-              href={AGENCY.url}
+              href={AGENCY.whatsapp}
               target="_blank"
-              rel="noopener"
-              className="font-semibold text-primary-foreground hover:text-red-400"
+              rel="noopener noreferrer"
+              className="font-bold text-orange-500 transition-colors hover:text-orange-400"
             >
               {AGENCY.name}
             </a>
-            {" · "}
-            <a
-              href={AGENCY.url}
-              target="_blank"
-              rel="noopener"
-              className="hover:text-primary-foreground"
-            >
-              {AGENCY.label}
-            </a>
-          </span>
+          </p>
+          <a
+            href={AGENCY.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-block text-primary-foreground/45 transition-colors hover:text-primary-foreground"
+          >
+            {AGENCY.label}
+          </a>
         </div>
       </div>
     </footer>
