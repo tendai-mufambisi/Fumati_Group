@@ -372,15 +372,15 @@
 }
 .loader-panel-a {
   background: var(--green-900);
-  clip-path: polygon(0 0, 62% 0, 38% 100%, 0 100%);
+  clip-path: polygon(0 0, 72% 0, 50.5% 100%, 0 100%);
 }
 .loader-panel-b {
   background: var(--green-700);
-  clip-path: polygon(62% 0, 100% 0, 100% 100%, 38% 100%);
+  clip-path: polygon(72% 0, 100% 0, 100% 100%, 50.5% 100%);
 }
 .loader-panel-c {
   background: var(--red-600);
-  clip-path: polygon(61% 0, 63.5% 0, 39.5% 100%, 37% 100%);
+  clip-path: polygon(71% 0, 73.5% 0, 52% 100%, 49.5% 100%);
 }
 .loader-panel-a.out {
   transform: translate(-75%, 8%);
@@ -404,9 +404,6 @@
 .loader-beam {
   animation: loader-beam 0.7s cubic-bezier(0.2, 0.9, 0.2, 1) both;
   transform-box: fill-box;
-}
-.loader-beam-red {
-  color: var(--red-600);
 }
 @keyframes loader-letter {
   from {

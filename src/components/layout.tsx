@@ -474,7 +474,7 @@ export function Loader() {
               fill="currentColor"
             />
             <path
-              className="loader-beam loader-beam-red"
+              className="loader-beam"
               style={{ animationDelay: "320ms" }}
               d="M440 438H517L487 545H412Z"
               fill="currentColor"
