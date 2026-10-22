@@ -55,7 +55,7 @@ export function ClientMarquee() {
 
 export function Testimonials({ light }: { light?: boolean }) {
   const [i, setI] = useState(0);
-  const t = testimonials[i];
+  const t = testimonials[i]!;
   useEffect(() => {
     const id = setInterval(() => setI((x) => (x + 1) % testimonials.length), 7000);
     return () => clearInterval(id);
@@ -87,13 +87,13 @@ export function Lightbox({ images, index, onClose, onIndex }: { images: { name: 
   }, [index, images.length, onClose, onIndex]);
   const [touch, setTouch] = useState<number | null>(null);
   if (index === null) return null;
-  const img = images[index];
+  const img = images[index]!;
   return (
     <div role="dialog" aria-modal className="fixed inset-0 z-[80] flex items-center justify-center bg-green-900/95 p-4" onClick={onClose}
-      onTouchStart={(e) => setTouch(e.touches[0].clientX)}
+      onTouchStart={(e) => setTouch(e.touches[0]!.clientX)}
       onTouchEnd={(e) => {
         if (touch === null) return;
-        const dx = e.changedTouches[0].clientX - touch;
+        const dx = e.changedTouches[0]!.clientX - touch;
         if (Math.abs(dx) > 50) onIndex((index + (dx < 0 ? 1 : -1) + images.length) % images.length);
         setTouch(null);
       }}>

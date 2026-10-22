@@ -86,7 +86,7 @@ function Home() {
           <SectionHead eyebrow="Why Fumati" title="Six reasons the big jobs come to us." />
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {whyUs.map((w, i) => {
-              const Icon = whyIcons[i];
+              const Icon = whyIcons[i]!;
               return (
                 <Reveal key={w.title} delay={i * 60} className="rounded-md border bg-background p-8">
                   <Icon className="h-8 w-8 text-green-500" />
