@@ -35,7 +35,7 @@ export function Reveal({ children, className, delay = 0 }: { children: ReactNode
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => e.isIntersecting && (setInView(true), io.disconnect()), { threshold: 0.12 });
+    const io = new IntersectionObserver(([e]) => e?.isIntersecting && (setInView(true), io.disconnect()), { threshold: 0.12 });
     io.observe(el);
     return () => io.disconnect();
   }, []);
@@ -53,7 +53,7 @@ export function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
     const el = ref.current;
     if (!el) return;
     const io = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return;
+      if (!e?.isIntersecting) return;
       io.disconnect();
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return setN(to);
       const start = performance.now();
@@ -137,7 +137,7 @@ export function CtaBanner() {
           <div className="mt-10 flex flex-wrap gap-3">
             <Link to="/contact" className="btn btn-red">Get a Quote</Link>
             <a href={waLink()} target="_blank" rel="noreferrer" className="btn btn-outline-white"><MessageCircle className="h-4 w-4" /> WhatsApp</a>
-            <a href={`tel:${company.phones[2].tel}`} className="btn btn-outline-white"><Phone className="h-4 w-4" /> Call us</a>
+            <a href={`tel:${company.phones[2]!.tel}`} className="btn btn-outline-white"><Phone className="h-4 w-4" /> Call us</a>
           </div>
         </Reveal>
       </div>
