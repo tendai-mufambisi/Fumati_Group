@@ -51,7 +51,7 @@ export const SEED_SETTINGS = {
   ceo_quote:
     "We don't just build structures — we build Zimbabwe. Every weld, every beam, every project is a commitment to excellence and a statement of what our nation is capable of.",
   ceo_credentials:
-    "Outstanding Businessman of the Year — Northern Region Megafest Business Awards\nLed Fumati to Company of the Year — Engineering Services\n15+ years of engineering leadership",
+    "40 Under 40 Young Project Leaders in Zimbabwe 2026 — CIPMZ\nOutstanding Businessman of the Year — Northern Region Megafest Business Awards\nLed Fumati to Company of the Year — Engineering Services\n15+ years of engineering leadership",
 
   // Contact
   phone1: "+263 8644 271 926",
@@ -177,6 +177,16 @@ export const SEED_COLLECTIONS: Record<string, Row[]> = {
   clients: [{ name: "The Heart Stadium", logo: "", url: "" }],
   awards: [
     {
+      title: "40 Under 40 Young Project Leaders in Zimbabwe",
+      organisation:
+        "Chartered Institute of Project Managers Zimbabwe (CIPMZ), with the Institute of Project Management Australia",
+      year: "2026",
+      recipient: "Mr. Tinashe Changweya, CEO & Founder",
+      description:
+        "Listed among Zimbabwe's 40 Under 40 Young Project Leaders for hard work, innovation and determination in delivering projects — recognition of his contribution and his potential to shape the future of the profession.",
+      image: img("cipmz-40-under-40-tinashe-changweya-2026"),
+    },
+    {
       title: "Company of the Year — Engineering Services",
       organisation: "Zimbabwe Business Awards",
       year: "",
@@ -271,6 +281,11 @@ export const SEED_COLLECTIONS: Record<string, Row[]> = {
       year: "",
       title: "Company of the Year",
       text: "Named Company of the Year — Engineering Services at the Zimbabwe Business Awards.",
+    },
+    {
+      year: "2026",
+      title: "40 Under 40 Young Project Leader",
+      text: "CEO Tinashe Changweya listed among CIPMZ's 40 Under 40 Young Project Leaders in Zimbabwe.",
     },
   ],
   industries: [

@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import {
   AwardCard,
+  FeaturedAward,
   ClientWall,
   LetterWall,
   Lightbox,
@@ -16,7 +17,7 @@ export const Route = createFileRoute("/awards")({
   head: () =>
     pageHead(
       "Awards, Clients & Testimonials",
-      "Fumati Engineers — Company of the Year, Engineering Services at the Zimbabwe Business Awards. See our awards, the brands we've worked with and what clients say.",
+      "Fumati Engineers awards: CEO Tinashe Changweya named in CIPMZ 40 Under 40 Young Project Leaders in Zimbabwe 2026, and Company of the Year — Engineering Services at the Zimbabwe Business Awards.",
       "/awards",
     ),
   component: Awards,
@@ -48,8 +49,14 @@ function Awards() {
       {awards.length > 0 && (
         <section className="mx-auto max-w-7xl px-5 py-28">
           <SectionHead eyebrow="Awards" title="Award-winning, on the record." />
-          <div className="mt-14 grid gap-6 lg:grid-cols-2">
-            {awards.map((a, i) => (
+          <Reveal className="mt-14">
+            <FeaturedAward
+              a={awards[0]!}
+              onOpen={() => setOpen(awardImages.findIndex((x) => x.id === awards[0]!.id))}
+            />
+          </Reveal>
+          <div className="mt-6 grid gap-6 lg:grid-cols-2">
+            {awards.slice(1).map((a, i) => (
               <Reveal key={a.id} delay={i * 80}>
                 <AwardCard
                   a={a}

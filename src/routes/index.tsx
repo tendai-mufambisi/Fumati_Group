@@ -4,6 +4,7 @@ import { ArrowRight, Check, Quote } from "lucide-react";
 import { HomeHero } from "@/components/hero";
 import {
   AwardCard,
+  FeaturedAward,
   ClientsStrip,
   ProcessSteps,
   ProjectCard,
@@ -248,13 +249,18 @@ function Home() {
                 </Link>
               )}
             </div>
-            <div className="mt-14 grid gap-6 lg:grid-cols-2">
-              {awards.slice(0, 4).map((a, i) => (
-                <Reveal key={a.id} delay={i * 80}>
-                  <AwardCard a={a} />
-                </Reveal>
-              ))}
-            </div>
+            <Reveal className="mt-14">
+              <FeaturedAward a={awards[0]!} />
+            </Reveal>
+            {awards.length > 1 && (
+              <div className="mt-6 grid gap-6 lg:grid-cols-2">
+                {awards.slice(1, 5).map((a, i) => (
+                  <Reveal key={a.id} delay={i * 80}>
+                    <AwardCard a={a} />
+                  </Reveal>
+                ))}
+              </div>
+            )}
           </div>
         </section>
       )}

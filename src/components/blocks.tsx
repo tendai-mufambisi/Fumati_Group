@@ -565,6 +565,48 @@ export function AwardCard({ a, onOpen }: { a: ItemOf<"awards">; onOpen?: () => v
   );
 }
 
+/**
+ * The lead award, shown whole (certificates are portrait and must not be cropped),
+ * with the details set large beside it. The first award in the dashboard list is the one shown.
+ */
+export function FeaturedAward({ a, onOpen }: { a: ItemOf<"awards">; onOpen?: () => void }) {
+  return (
+    <div className="relative grid overflow-hidden rounded-md bg-green-900 text-primary-foreground shadow-card lg:grid-cols-[minmax(0,26rem)_1fr]">
+      <div className="absolute inset-0 blueprint opacity-60" />
+      <div className="absolute -right-24 top-0 hidden h-full w-48 -skew-x-[18deg] bg-red-600/90 lg:block" />
+      <button
+        onClick={onOpen}
+        className="group relative m-6 self-center overflow-hidden rounded-sm bg-background p-2 shadow-card transition-transform hover:-rotate-1 sm:m-10"
+        aria-label={`View ${a.title} full size`}
+      >
+        <Img
+          src={a.image}
+          alt={`${a.title}${a.recipient ? ` — ${a.recipient}` : ""}, ${a.organisation}`}
+          className="h-auto w-full !object-contain"
+        />
+      </button>
+      <div className="relative flex flex-col justify-center p-8 pt-0 sm:p-12 lg:pl-4">
+        <p className="eyebrow flex items-center gap-3 text-red-400">
+          <span className="h-px w-8 bg-current" /> Latest recognition{a.year ? ` · ${a.year}` : ""}
+        </p>
+        <Medal className="mt-6 h-12 w-12 text-red-500" />
+        <h3 className="mt-5 max-w-xl text-3xl font-extrabold leading-tight sm:text-4xl">
+          {a.title}
+        </h3>
+        {a.recipient && (
+          <p className="mt-4 font-display text-xl font-bold text-red-400">{a.recipient}</p>
+        )}
+        {a.organisation && <p className="mt-2 text-primary-foreground/80">{a.organisation}</p>}
+        {a.description && (
+          <p className="mt-6 max-w-xl leading-relaxed text-primary-foreground/75">
+            {a.description}
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
+
 /* ---------- team ---------- */
 
 export function TeamCard({ m, index = 0 }: { m: ItemOf<"team">; index?: number }) {
